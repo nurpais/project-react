@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
 import { seedLocalDatabase } from '@/api/data/seed';
+import AuthProvider from '@/components/AuthProvider';
 import ThemeProvider from '@/components/ThemeProvider';
 
 import Router from './Router';
@@ -15,7 +16,9 @@ seedLocalDatabase();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ThemeProvider>
     <Provider store={store}>
-      <Router />
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
     </Provider>
   </ThemeProvider>,
 );
